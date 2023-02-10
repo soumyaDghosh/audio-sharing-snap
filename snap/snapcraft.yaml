@@ -48,7 +48,6 @@ parts:
       - CARGO_BUILD_JOBS: $CRAFT_PARALLEL_BUILD_COUNT
     stage-packages:
       - liblapacke-dev
-      - 
     override-pull: |
       wget https://sh.rustup.rs -O $CRAFT_PART_SRC/rustup-init.sh
       chmod +x $CRAFT_PART_SRC/rustup-init.sh
