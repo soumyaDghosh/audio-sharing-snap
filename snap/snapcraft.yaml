@@ -25,6 +25,9 @@ parts:
     source: https://gitlab.gnome.org/World/AudioSharing.git
     source-type: git
     source-tag: 0.2.1
+    rust-features:
+      - extern
+      - rustc-link-lib
     stage-packages:
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-dev
