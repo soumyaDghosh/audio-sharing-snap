@@ -19,15 +19,33 @@ slots:
     
 
 parts:
+  rust:
+    plugin: nil
+    build-packages:
+      - wget
+    override-pull: |
+      # Do not use rustup to work around https://forum.snapcraft.io/t/armhf-builds-on-launchpad-timing-out/31008
+      REQUIRED_RUST_VERSION=1.65.0
+      ROOT=https://static.rust-lang.org/dist/rust-$REQUIRED_RUST_VERSION
+      if [ $SNAPCRAFT_TARGET_ARCH = "amd64" ]; then
+        BINARIES_SUFFIX=x86_64-unknown-linux-gnu
+      elif [ $SNAPCRAFT_TARGET_ARCH = "armhf" ]; then
+        BINARIES_SUFFIX=armv7-unknown-linux-gnueabihf
+      elif [ $SNAPCRAFT_TARGET_ARCH = "arm64" ]; then
+        BINARIES_SUFFIX=aarch64-unknown-linux-gnu
+      fi
+      wget -O - $ROOT-$BINARIES_SUFFIX.tar.gz | tar -x -z --strip-components=1
+      ./install.sh --prefix=/usr --destdir=$SNAPCRAFT_STAGE
+    override-prime: ''
   audio-sharing:
     # See 'snapcraft plugins'
-    plugin: rust
+    after: [rust]
+    plugin: meson
     source: https://gitlab.gnome.org/World/AudioSharing.git
     source-type: git
     source-tag: 0.2.1
-    rust-features:
-      - extern
-      - rustc-link-lib
+    meson-parameters:
+      - --prefix=/usr
     stage-packages:
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-dev
@@ -37,7 +55,8 @@ parts:
       sed -e 's|Icon=de.haeckerfelix.AudioSharing|Icon=/usr/local/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing|' -i usr/local/share/applications/de.haeckerfelix.AudioSharing.desktop
   cleanup:
     after:  # Make this part run last; list all your other parts here
-      - tube-converter
+      - audio-sharing
+      - rust
     plugin: nil
     build-snaps:  # List all content-snaps and base snaps you're using here
       - gnome-42-2204
