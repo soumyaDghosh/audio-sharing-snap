@@ -34,11 +34,16 @@ parts:
     source-tag: 0.2.1
     meson-parameters:
       - --prefix=/usr
+    build-packages:
+      - libelf
+      - elfutils
+      - libgstreamer1.0-dev
     stage-packages:
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-dev
       - libfreetype-dev
       - elfutils
+      - libelf-dev
     override-prime: |
       craftctl default
       sed -e 's|Icon=de.haeckerfelix.AudioSharing|Icon=/usr/local/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing|' -i usr/local/share/applications/de.haeckerfelix.AudioSharing.desktop
