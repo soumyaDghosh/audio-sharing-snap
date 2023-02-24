@@ -46,7 +46,7 @@ parts:
       - libelf1
     override-prime: |
       craftctl default
-      sed -e 's|Icon=de.haeckerfelix.AudioSharing|Icon=/usr/local/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing|' -i usr/local/share/applications/de.haeckerfelix.AudioSharing.desktop
+      sed -e 's|Icon=de.haeckerfelix.AudioSharing|Icon=/usr/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing|' -i usr/share/applications/de.haeckerfelix.AudioSharing.desktop
   cleanup:
     after:  # Make this part run last; list all your other parts here
       - audio-sharing
