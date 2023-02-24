@@ -12,7 +12,7 @@ grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
 slots:
-  dbus:
+  dbus-svc:
     interface: dbus
     bus: session
     name: de.haeckerfelix.AudioSharing
@@ -38,6 +38,7 @@ parts:
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-dev
       - libfreetype-dev
+      - elfutils
     override-prime: |
       craftctl default
       sed -e 's|Icon=de.haeckerfelix.AudioSharing|Icon=/usr/local/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing|' -i usr/local/share/applications/de.haeckerfelix.AudioSharing.desktop
@@ -71,3 +72,5 @@ apps:
       - mount-observe
       - removable-media
       - network-manager
+    slots:
+      - dbus-svc
