@@ -54,7 +54,6 @@ parts:
     plugin: nil
     build-snaps:  # List all content-snaps and base snaps you're using here
       - gnome-42-2204
-      - gnome-42-2204-sdk
       - core22
     override-prime: |
       set -eux
