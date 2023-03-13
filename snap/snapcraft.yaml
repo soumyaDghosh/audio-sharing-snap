@@ -16,7 +16,7 @@ slots:
     interface: dbus
     bus: session
     name: de.haeckerfelix.AudioSharing
-
+    
 package-repositories:
   - type: apt
     components: [kinetic]
