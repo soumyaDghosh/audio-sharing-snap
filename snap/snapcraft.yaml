@@ -39,6 +39,7 @@ parts:
       - elfutils
       - libgstreamer1.0-dev
     stage-packages:
+      - rustup
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-dev
       - libfreetype-dev
@@ -50,7 +51,6 @@ parts:
   cleanup:
     after:  # Make this part run last; list all your other parts here
       - audio-sharing
-      - rust
     plugin: nil
     build-snaps:  # List all content-snaps and base snaps you're using here
       - gnome-42-2204
