@@ -41,6 +41,10 @@ parts:
     source: https://gitlab.gnome.org/World/AudioSharing.git
     source-type: git
     source-tag: 0.2.1
+    build-environment:
+      - RUSTUP_HOME: $CRAFT_STAGE/usr/share/rust
+      - CARGO_HOME: $CRAFT_STAGE/usr/share/rust
+      - CARGO_BUILD_JOBS: $CRAFT_PARALLEL_BUILD_COUNT
     meson-parameters:
       - --prefix=/snap/audio-sharing/current/usr
     build-packages:
