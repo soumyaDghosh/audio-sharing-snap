@@ -58,9 +58,9 @@ parts:
       - libfreetype-dev
       - elfutils
       - libelf1
-    override-prime: |
+    override-pull: |
       craftctl default
-      sed -e 's|Icon=de.haeckerfelix.AudioSharing|Icon=/usr/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing|' -i usr/share/applications/de.haeckerfelix.AudioSharing.desktop
+      sed -e 's|Icon=@APP_ID@|Icon=usr/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing|' -i data/de.haeckerfelix.AudioSharing.desktop.in.in
   cleanup:
     after:  # Make this part run last; list all your other parts here
       - audio-sharing
