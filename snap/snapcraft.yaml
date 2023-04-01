@@ -79,7 +79,7 @@ parts:
 apps:
   audio-sharing:
     command: usr/bin/audio-sharing
-    desktop: usr/share/applications/de.haeckerfelix.AudioSharing.desktop
+    #desktop: usr/share/applications/de.haeckerfelix.AudioSharing.desktop
     common-id: de.haeckerfelix.AudioSharing
     extensions: [gnome]
     plugs:
@@ -87,7 +87,7 @@ apps:
       - desktop
       - desktop-launch
       - network
-      - network-bind 
+      - network-bind
       - mount-observe
       - removable-media
       - network-manager
