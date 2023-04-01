@@ -36,6 +36,7 @@ parts:
     override-prime: |
       echo 'Skip Prime'
   audio-sharing:
+    after: [rustup]
     # See 'snapcraft plugins'
     plugin: meson
     source: https://gitlab.gnome.org/World/AudioSharing.git
