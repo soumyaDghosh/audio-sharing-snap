@@ -17,6 +17,24 @@ slots:
     bus: session
     name: de.haeckerfelix.AudioSharing
 parts:
+  rustup:
+    plugin: nil
+    build-packages: [wget]
+    build-environment:
+      - RUSTUP_HOME: $CRAFT_PART_INSTALL/usr/share/rust
+      - CARGO_HOME: $CRAFT_PART_INSTALL/usr/share/rust
+      - CARGO_BUILD_JOBS: $CRAFT_PARALLEL_BUILD_COUNT
+    override-pull: |
+      wget https://sh.rustup.rs -O $CRAFT_PART_SRC/rustup-init.sh
+      chmod +x $CRAFT_PART_SRC/rustup-init.sh
+    override-build: |
+      $CRAFT_PART_SRC/rustup-init.sh -y --no-modify-path
+      mkdir -p $CRAFT_PART_INSTALL/usr/bin
+      for i in `ls $RUSTUP_HOME/bin/`; do
+        ln -s ../share/rust/bin/$i $CRAFT_PART_INSTALL/usr/bin/$i
+      done
+    override-prime: |
+      echo 'Skip Prime'
   audio-sharing:
     # See 'snapcraft plugins'
     plugin: meson
@@ -24,14 +42,12 @@ parts:
     source-type: git
     source-tag: 0.2.1
     meson-parameters:
-      - --prefix=/usr
+      - --prefix=/snap/audio-sharing/current/usr
     build-packages:
-      - rustup
       - libelf-dev
       - elfutils
       - libgstreamer1.0-dev
     stage-packages:
-      - rustup
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-dev
       - libfreetype-dev
@@ -43,6 +59,7 @@ parts:
   cleanup:
     after:  # Make this part run last; list all your other parts here
       - audio-sharing
+      - rustup
     plugin: nil
     build-snaps:  # List all content-snaps and base snaps you're using here
       - gnome-42-2204
