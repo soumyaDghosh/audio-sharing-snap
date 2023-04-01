@@ -82,14 +82,13 @@ parts:
       find $CRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
 apps:
   audio-sharing:
-    command: usr/bin/de.haeckerfelix.AudioSharing
+    command: usr/bin/audio-sharing
     desktop: usr/share/applications/de.haeckerfelix.AudioSharing.desktop
     common-id: de.haeckerfelix.AudioSharing
     extensions: [gnome]
+    environment:
+      GTK_USE_PORTAL: '1'
     plugs:
-      - home
-      - desktop
-      - desktop-launch
       - network
       - network-bind
       - mount-observe
