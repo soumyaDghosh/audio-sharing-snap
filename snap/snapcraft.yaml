@@ -51,12 +51,11 @@ parts:
     stage-packages:
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-dev
-      - libfreetype-dev
       - elfutils
       - libelf1
     override-pull: |
       craftctl default
-      sed -e 's|Icon=@APP_ID@|Icon=usr/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing|' -i data/de.haeckerfelix.AudioSharing.desktop.in.in
+      sed -e 's|Icon=@APP_ID@|Icon=usr/share/icons/hicolor/scalable/apps/de.haeckerfelix.AudioSharing.svg|' -i data/de.haeckerfelix.AudioSharing.desktop.in.in
     parse-info: [usr/share/metainfo/de.haeckerfelix.AudioSharing.metainfo.xml]
     organize:
       snap/audio-sharing/current/usr: usr
