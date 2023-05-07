@@ -40,6 +40,7 @@ parts:
       - libelf-dev
       - elfutils
       - libgstreamer1.0-dev
+      - libgstreamer-plugins-base1.0-dev
     stage-packages:
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-0
