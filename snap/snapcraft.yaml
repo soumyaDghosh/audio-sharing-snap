@@ -44,6 +44,7 @@ parts:
     stage-packages:
       - libgstreamer1.0-0
       - libgstrtspserver-1.0-0
+      - libadwaita-1-0
     parse-info: [usr/share/metainfo/de.haeckerfelix.AudioSharing.metainfo.xml]
     organize:
       snap/audio-sharing/current/usr: usr
