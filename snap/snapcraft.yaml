@@ -60,6 +60,11 @@ parts:
       cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
       find $CRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+slots:
+  audio-sharing:
+    interface: dbus
+    bus: session
+    name: de.haeckerfelix.AudioSharing
 apps:
   audio-sharing:
     command: usr/bin/audio-sharing
