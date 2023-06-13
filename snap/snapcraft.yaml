@@ -65,3 +65,4 @@ apps:
     extensions: [gnome]
     plugs:
       - audio-playback
+      - pulseaudio
