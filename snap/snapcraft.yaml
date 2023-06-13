@@ -41,29 +41,18 @@ parts:
       - --prefix=/snap/audio-sharing/current/usr
     build-packages:
       - libelf-dev
-      - elfutils
-      - libgstreamer1.0-dev
       - libgstrtspserver-1.0-dev
-    stage-packages:
-      - libgstrtspserver-1.0-0
     parse-info: [ usr/share/metainfo/de.haeckerfelix.AudioSharing.metainfo.xml ]
     organize:
       snap/audio-sharing/current: .
-  cleanup:
-    after:  # Make this part run last; list all your other parts here
-      - audio-sharing
-      - rustup
+  deps:
     plugin: nil
-    build-snaps:  # List all content-snaps and base snaps you're using here
-      - gnome-42-2204
-      - gnome-42-2204-sdk
-      - core22
-    override-prime: |
-      set -eux
-      for snap in "gnome-42-2204" "gnome-42-2204-sdk" "core22"; do
-      cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
-      done
-      find $CRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+    after: [ audio-sharing ]
+    stage-packages:
+      - libgstrtspserver-1.0-0
+    prime:
+      - usr/lib/x86_64-linux-gnu/libgstrtspserver-1.0.so.0
+      - usr/lib/x86_64-linux-gnu/libgstrtspserver-1.0.so.0.2001.0
 slots:
   audio-sharing:
     interface: dbus
