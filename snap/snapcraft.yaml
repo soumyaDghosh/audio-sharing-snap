@@ -51,8 +51,8 @@ parts:
     stage-packages:
       - libgstrtspserver-1.0-0
     prime:
-      - usr/lib/x86_64-linux-gnu/libgstrtspserver-1.0.so.0
-      - usr/lib/x86_64-linux-gnu/libgstrtspserver-1.0.so.0.2001.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstrtspserver-1.0.so.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstrtspserver-1.0.so.0.2001.0
 slots:
   audio-sharing:
     interface: dbus
