@@ -64,5 +64,5 @@ apps:
     common-id: de.haeckerfelix.AudioSharing
     extensions: [gnome]
     plugs:
-      - audio-playback
+      - audio-record
       - pulseaudio
