@@ -65,12 +65,4 @@ apps:
     extensions: [gnome]
     plugs:
       - audio-playback
-      - alsa
-      - audio-record
-      - pulseaudio
       - network
-      - network-bind
-      - network-status
-      - network-manager
-      - network-observe
-      - network-setup-control
