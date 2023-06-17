@@ -7,7 +7,7 @@ architectures:
   - build-on: amd64
   - build-on: arm64
   - build-on: armhf
-  
+
 parts:
   rustup:
     plugin: nil
@@ -42,6 +42,16 @@ parts:
     build-packages:
       - libelf-dev
       - libgstrtspserver-1.0-dev
+    override-pull: |
+      craftctl default
+      patch -p1 < $CRAFT_PROJECT_DIR/audio-sharing.patch
+    override-build: |
+      craftctl default
+      mkdir -p $CRAFT_PART_INSTALL/meta/gui
+      cp -r $CRAFT_PART_INSTALL/snap/audio-sharing/current/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
+      for i in `find $CRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`; do
+        mv $i "`dirname $i`/snap.$CRAFT_PROJECT_NAME.`basename $i`"
+      done
     parse-info: [ usr/share/metainfo/de.haeckerfelix.AudioSharing.metainfo.xml ]
     organize:
       snap/audio-sharing/current: .
