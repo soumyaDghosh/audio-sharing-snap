@@ -1,0 +1,23 @@
+diff -Naur a/data/de.haeckerfelix.AudioSharing.desktop.in.in b/data/de.haeckerfelix.AudioSharing.desktop.in.in
+--- a/data/de.haeckerfelix.AudioSharing.desktop.in.in	2023-06-18 00:27:31.858817839 +0530
++++ b/data/de.haeckerfelix.AudioSharing.desktop.in.in	2023-06-18 00:32:20.381575118 +0530
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=@NAME@
+ # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+-Icon=@APP_ID@
++Icon=snap.audio-sharing.@APP_ID@
+ Exec=@PKGNAME@
+ Terminal=false
+ Type=Application
+diff -Naur a/data/de.haeckerfelix.AudioSharing.metainfo.xml.in.in b/data/de.haeckerfelix.AudioSharing.metainfo.xml.in.in
+--- a/data/de.haeckerfelix.AudioSharing.metainfo.xml.in.in	2023-06-18 00:27:58.269964981 +0530
++++ b/data/de.haeckerfelix.AudioSharing.metainfo.xml.in.in	2023-06-18 00:32:37.365035305 +0530
+@@ -2,6 +2,7 @@
+ <!-- Copyright 2022 Felix Häcker -->
+ <component type="desktop-application">
+   <id>@APP_ID@</id>
++  <icon type="stock">snap.audio-sharing.@APP_ID@</icon>
+   <name>@NAME@</name>
+   <summary>Share your computer audio</summary>
+   <translation type="gettext">audio-sharing</translation>
