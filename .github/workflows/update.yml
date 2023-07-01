@@ -15,5 +15,5 @@ jobs:
       - name: Run desktop-snaps action
         uses: ubuntu/desktop-snaps@stable
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           repo: ${{ github.repository }}
