@@ -6,6 +6,8 @@ on:
     - cron: '9 7 * * *'
   workflow_dispatch:
 
+permissions: write-all
+
 jobs:
   update-snapcraft-yaml:
     runs-on: ubuntu-latest
