@@ -1,8 +1,11 @@
-name: audio-sharing # you probably want to 'snapcraft register <name>'
-base: core22 # the base snap is the execution environment for this snap
+name: audio-sharing
+base: core22
 adopt-info: audio-sharing
-grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+grade: stable 
+confinement: strict 
+license: GPL-3.0+
+issues: https://github.com/soumyaDghosh/audio-sharing-snap/issues
+contact: soumyadeepghosh2004@zohomail.in
 architectures:
   - build-on: amd64
   - build-on: arm64
